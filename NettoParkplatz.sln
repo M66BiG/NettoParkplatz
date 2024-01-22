@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34408.163
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeeckerLearningGround", "BeeckerLearningGround\BeeckerLearningGround\BeeckerLearningGround.csproj", "{0BC5F368-3002-4AE5-ADA8-ADC49A0BA310}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeeckerLearningGround.Client", "BeeckerLearningGround\BeeckerLearningGround.Client\BeeckerLearningGround.Client.csproj", "{62432F09-1536-44CB-8240-B2B838854240}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0BC5F368-3002-4AE5-ADA8-ADC49A0BA310}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BC5F368-3002-4AE5-ADA8-ADC49A0BA310}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BC5F368-3002-4AE5-ADA8-ADC49A0BA310}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BC5F368-3002-4AE5-ADA8-ADC49A0BA310}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62432F09-1536-44CB-8240-B2B838854240}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62432F09-1536-44CB-8240-B2B838854240}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62432F09-1536-44CB-8240-B2B838854240}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62432F09-1536-44CB-8240-B2B838854240}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {31943053-B2C3-4B81-A83B-D6467E7E3DB9}
+	EndGlobalSection
+EndGlobal

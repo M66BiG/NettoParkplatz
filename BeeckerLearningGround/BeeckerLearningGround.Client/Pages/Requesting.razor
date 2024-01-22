@@ -1,0 +1,37 @@
+﻿@page "/requesting"
+@inject HttpClient Http
+@rendermode InteractiveWebAssembly
+
+<PageTitle>Request Test</PageTitle>
+
+<h3>Requesting</h3>
+
+@if(loading)
+{
+    <p>Loading...</p>
+}
+else
+{
+    <Virtualize Items="people" Context="d">
+        <ItemContent>
+            <h4>@d.title</h4>
+            <p>@d.body</p>
+            </ItemContent>
+        <EmptyContent><p>Emptys</p></EmptyContent>
+    </Virtualize>
+}
+
+@code {
+    private RequestModel[]? people;
+
+    private bool loading = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        people = await Http.GetFromJsonAsync<RequestModel[]>("https://jsonplaceholder.typicode.com/posts");
+    }
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        loading = false;
+    }
+}
