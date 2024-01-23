@@ -1,5 +1,5 @@
 ﻿@page "/requesting"
-@inject HttpClient Http
+@inject IDynamicHttp dynamicHttp
 @rendermode InteractiveWebAssembly
 
 <PageTitle>Request Test</PageTitle>
@@ -28,9 +28,11 @@ else
 
     protected override async Task OnInitializedAsync()
     {
+        dynamicHttp.SetBaseAdress("https://jsonplaceholder.typicode.com/");
+        HttpClient httpClient = dynamicHttp.GetHttpClient();
         try
         {
-            people = await Http.GetFromJsonAsync<RequestModel[]>("https://jsonplaceholder.typicode.com/posts");
+            people = await httpClient.GetFromJsonAsync<RequestModel[]>("posts");
         }
         catch (Exception ex)
         {

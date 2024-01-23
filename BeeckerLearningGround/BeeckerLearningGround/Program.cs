@@ -1,3 +1,4 @@
+using BeeckerLearningGround.Client.Models;
 using BeeckerLearningGround.Client.Pages;
 using BeeckerLearningGround.Components;
 
@@ -9,6 +10,7 @@ builder.Services.AddRazorComponents()
     .AddInteractiveWebAssemblyComponents();
 
 builder.Services.AddHttpClient();
+builder.Services.AddScoped<IDynamicHttp, DynamicHttp>();
 
 var app = builder.Build();
 
