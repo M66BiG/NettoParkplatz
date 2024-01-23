@@ -1,9 +1,7 @@
-﻿
-namespace BeeckerLearningGround.Client.Models
+﻿namespace BeeckerLearningGround.Client.Models;
+
+public interface IDynamicHttp
 {
-    public interface IDynamicHttp
-    {
-        HttpClient GetHttpClient();
-        void SetBaseAdress(string baseAdress);
-    }
+    HttpClient GetHttpClient();
+    void SetBaseAdress(string baseAdress);
 }

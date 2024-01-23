@@ -1,22 +1,21 @@
-﻿namespace BeeckerLearningGround.Client.Models
+﻿namespace BeeckerLearningGround.Client.Models;
+
+public class DynamicHttp : IDynamicHttp
 {
-    public class DynamicHttp : IDynamicHttp
+    private readonly HttpClient _httpClient;
+
+    public DynamicHttp()
     {
-        private readonly HttpClient _httpClient;
+        _httpClient = new HttpClient();
+    }
 
-        public DynamicHttp()
-        {
-            _httpClient = new HttpClient();
-        }
+    public void SetBaseAdress(string baseAdress)
+    {
+        _httpClient.BaseAddress = new Uri(baseAdress);
+    }
 
-        public void SetBaseAdress(string baseAdress)
-        {
-            _httpClient.BaseAddress = new Uri(baseAdress);
-        }
-
-        public HttpClient GetHttpClient()
-        {
-            return _httpClient;
-        }
+    public HttpClient GetHttpClient()
+    {
+        return _httpClient;
     }
 }
