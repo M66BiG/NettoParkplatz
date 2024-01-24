@@ -17,12 +17,34 @@ else
             <h4>@d.title</h4>
             <p>@d.body</p>
         </ItemContent>
-        <EmptyContent><p>Emptys</p></EmptyContent>
+        <EmptyContent><p>Empty Peopledata</p></EmptyContent>
+    </Virtualize>
+
+    <Virtualize Items="users" Context="u">
+        <ItemContent>
+            <h3>@u.name with the Username @u.username ID:@u.id</h3>
+            <p>@u.email</p>
+            <ul>
+                <li>@u.address.street</li>
+                <li>@u.address.suite</li>
+                <li>@u.address.city</li>
+                <li>@u.address.zipcode</li>
+                <li>@u.address.geo.lat</li>
+                <li>@u.address.geo.lng</li>
+            </ul>
+            <p>@u.phone</p>
+            <p>@u.website</p>
+            <p>@u.company.name</p>
+            <p>@u.company.catchPhrase</p>
+            <p>@u.company.bs</p>
+        </ItemContent>
+        <EmptyContent><p>Empty Userdata</p></EmptyContent>
     </Virtualize>
 }
 
 @code {
     private RequestModel[]? people;
+    private UserModel[]? users;
     private HttpClient? _httpClient;
 
     private bool loading = true;
@@ -33,10 +55,19 @@ else
         try
         {
             people = await _httpClient.GetFromJsonAsync<RequestModel[]>("posts");
+
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Error fetching data: {ex.Message}");
+            Console.WriteLine($"Error fetching people data: {ex.Message}");
+        }
+        try
+        {
+            users = await _httpClient.GetFromJsonAsync<UserModel[]>("users");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error fetching user data: {ex.Message}");
         }
     }
 
