@@ -1,3 +1,4 @@
+using BeeckerLearningGround.Classes;
 using BeeckerLearningGround.Client.Models;
 using BeeckerLearningGround.Client.Pages;
 using BeeckerLearningGround.Components;
@@ -10,6 +11,7 @@ builder.Services.AddRazorComponents()
     .AddInteractiveWebAssemblyComponents();
 
 builder.Services.AddHttpClient();
+builder.Services.AddScoped<ICalculatorLogic, CalculatorLogic>();
 
 var app = builder.Build();
 
@@ -34,5 +36,6 @@ app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode()
     .AddInteractiveWebAssemblyRenderMode()
     .AddAdditionalAssemblies(typeof(BeeckerLearningGround.Client._Imports).Assembly);
+
 
 app.Run();

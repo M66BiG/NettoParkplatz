@@ -6,7 +6,7 @@
 
 <h3>Requesting</h3>
 
-@if(loading)
+@if (loading)
 {
     <p>Loading...</p>
 }
@@ -16,7 +16,7 @@ else
         <ItemContent>
             <h4>@d.title</h4>
             <p>@d.body</p>
-            </ItemContent>
+        </ItemContent>
         <EmptyContent><p>Emptys</p></EmptyContent>
     </Virtualize>
 }
