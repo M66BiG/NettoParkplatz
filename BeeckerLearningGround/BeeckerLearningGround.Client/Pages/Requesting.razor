@@ -1,12 +1,12 @@
 ﻿@page "/requesting"
-@inject IDynamicHttp dynamicHttp
+@inject IHttpClientFactory HttpClientFactory
 @rendermode InteractiveWebAssembly
 
 <PageTitle>Request Test</PageTitle>
 
 <h3>Requesting</h3>
 
-@if(loading)
+@if (loading)
 {
     <p>Loading...</p>
 }
@@ -16,29 +16,30 @@ else
         <ItemContent>
             <h4>@d.title</h4>
             <p>@d.body</p>
-            </ItemContent>
+        </ItemContent>
         <EmptyContent><p>Emptys</p></EmptyContent>
     </Virtualize>
 }
 
 @code {
     private RequestModel[]? people;
+    private HttpClient? _httpClient;
 
     private bool loading = true;
 
     protected override async Task OnInitializedAsync()
     {
-        dynamicHttp.SetBaseAdress("https://jsonplaceholder.typicode.com/");
-        HttpClient httpClient = dynamicHttp.GetHttpClient();
+        _httpClient = HttpClientFactory.CreateClient("JsonPlaceholder");
         try
         {
-            people = await httpClient.GetFromJsonAsync<RequestModel[]>("posts");
+            people = await _httpClient.GetFromJsonAsync<RequestModel[]>("posts");
         }
         catch (Exception ex)
         {
             Console.WriteLine($"Error fetching data: {ex.Message}");
         }
     }
+
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         loading = false;
