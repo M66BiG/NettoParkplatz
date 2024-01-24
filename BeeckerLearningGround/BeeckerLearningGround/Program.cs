@@ -11,7 +11,6 @@ builder.Services.AddRazorComponents()
     .AddInteractiveWebAssemblyComponents();
 
 builder.Services.AddHttpClient();
-builder.Services.AddScoped<IDynamicHttp, DynamicHttp>();
 builder.Services.AddScoped<ICalculatorLogic, CalculatorLogic>();
 
 var app = builder.Build();
