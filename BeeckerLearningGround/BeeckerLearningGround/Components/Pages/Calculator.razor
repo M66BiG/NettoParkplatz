@@ -1,0 +1,41 @@
+﻿@inject ICalculatorLogic calculatorLogic
+@page "/calculator"
+@rendermode InteractiveAuto
+
+<PageTitle>String Calculator</PageTitle>
+
+<h3>Calculator</h3>
+
+<EditForm Enhance Model="number" method="post" FormName="calculator" OnValidSubmit="SubmitForm">
+    <DataAnnotationsValidator/>
+    <ValidationSummary/>
+    <div>
+        <label>Formel</label>
+        <InputText @bind-Value="number.Term"></InputText>
+    </div>
+</EditForm>
+
+@if (result == 0)
+{
+    <p>Tippe den Term oben ein ohne "=" zeichen um etwas auszurechnen.</p>
+}
+else
+{
+    <p>Dein Ergebnis lautet: @result</p>
+}
+
+
+@code {
+    [SupplyParameterFromForm]
+    private Number? number { get; set; } = new();
+
+    private double result { get; set; }
+
+    private void SubmitForm()
+    {
+        result = 0;
+        result = calculatorLogic.Compute(number.Term);
+        number = new();
+    }
+}
+
